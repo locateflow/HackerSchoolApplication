@@ -2,7 +2,6 @@ String[] tempSt;
 Unit u = new Unit("");
 
 
-//her's a comment
 String inputWord;
 
 PFont f;
@@ -19,13 +18,10 @@ void setup() {
   f = createFont("Arial",16,true);
 
   u.addChild("creativity");
-//  u.addChild("could");
 }
 
 void draw() {
-//  if(mousePressed == true){
   
-//}
   background(255);
   int indent = 25; 
   // Set the font and fill for text
@@ -33,7 +29,7 @@ void draw() {
   fill(0);
   
   // Display everything
-  text("Click in this applet and type. \nHit return to save what you typed. ", indent, 40);
+  text("Click in this applet and type a one-sentence definition of creativity starting with the words 'creativity is.' \nPress return where you would normally end with a period.   \nAdd new definitions that start with the words 'creativity is' in the same manner.  \nNotice how each new definition branches from ways you have previously started your definition.", indent, 40);
   text(typing,indent,90);
   text("currentWord: "+currentWord,indent,130);
   
