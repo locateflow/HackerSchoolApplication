@@ -28,20 +28,16 @@ void draw() {
   textFont(f);
   fill(0);
   
-  // Display everything
-  text("Click in this applet and type a one-sentence definition of creativity starting with the words 'creativity is.' \nPress return where you would normally end with a period.   \nAdd new definitions that start with the words 'creativity is' in the same manner.  \nNotice how each new definition branches from ways you have previously started your definition.", indent, 40);
-  text(typing,indent,90);
-  text("currentWord: "+currentWord,indent,130);
   
-  text("u.currentNode.self: "+u.currentNode.self,indent,170);
-  text("children:",indent, 210);
-  text("type length: "+typing.length(), indent, 240);
-  text("save length: "+saved.length(), indent, 270);
+  text("Click in this applet and type a one-sentence definition of creativity starting with the words 'creativity is.' \nPress return where you would normally end with a period.   \nAdd new definitions that start with the words 'creativity is' in the same manner.  \nTry to start your definitions in similar ways so that you can notice how each new definition branches from ways you have previously started your definition.", indent, 40);
+  text(typing,indent,300);
+  
+
 
   Unit X;
   for (int i = 0; i<u.currentNode.children.size();i++){
     X = (Unit) u.currentNode.children.get(i);
-    text(X.self,indent,250+40*i);
+    //(X.self,indent,250+40*i);
   }
     
 
