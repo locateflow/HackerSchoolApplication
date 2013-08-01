@@ -77,7 +77,7 @@ void keyPressed() {
 class Unit {
   // Unit has a word called 'self' and 'children,' a list of words that follow it.
   // 'currentNode' is used to keep track of which branch of the tree the user's sentence has currently reached. 
-  String self; ArrayList children; Unit currentNode;
+  String self; ArrayList children; Unit currentNode; int parendId;
   // 'rand' ensures that all the branches do not sway in the same direction at the same time.
   float rand = random(0,2*PI);
   Unit (String self_in){
