@@ -13,11 +13,12 @@ PFont f;
 String typing = "";
 
 // Variable to store most recent word when return or space is pressed.
-String saved = "";
+String savedWord = "";
 
 void setup() {
   size(1500,900);
   f = createFont("Arial", 16, true);
+  // The tree reflects series of definitions that start with the word 'creativity.'
   u.addChild("creativity");
 }
 
@@ -27,29 +28,26 @@ void draw() {
   int indent = 25; 
   // Set the font and fill for text
   textFont(f);
-  fill(0);  
+  fill(0);
+  // Explanation for the user.  
   text("Click in this applet and type a one-sentence definition of creativity starting with the words 'creativity is.' \nPress return where you would normally end with a period.   \nAdd new definitions that start with the words 'creativity is' in the same manner.  \nIf you add definitions with beginnings similar to previous ones you will see an interesting tree structure develop.", indent, 40);
   text("Type and your current definition will appear below:", indent, 226);
-  text(typing, indent, 250);  
-  Unit X;
-  for (int i = 0; i<u.currentNode.children.size();i++){
-    X = (Unit) u.currentNode.children.get(i);
-  }    
-  pushMatrix();
+  // Display what user is typing.
+  text(typing, indent, 250);
+  
   translate(100, height/2);
   u.display();
-  popMatrix();
   
 }
 
 void keyPressed() {
 
   if (key == '\n' ) {
-
+    // If key is 'return' add the most recent word to the tree.
     u.integrateWord(savedWord);  
     u.reset();
-   typing = "";
-   savedWord = "";
+    typing = "";
+    savedWord = "";
     
   } 
   if (key == ' '){
