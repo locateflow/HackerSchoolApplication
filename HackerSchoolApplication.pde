@@ -7,6 +7,7 @@
 
 // 'u' contains the data of the branching tree structure that is displayed.
 Unit u = new Unit("");
+int idCounter = 0;
 PFont f;
 
 // Variable to store text currently being typed, character by character.
@@ -76,8 +77,9 @@ void keyPressed() {
 
 class Unit {
   // Unit has a word called 'self' and 'children,' a list of words that follow it.
+  // It also has an 'id' number and a record of its parent's id number, 'parentId.'
   // 'currentNode' is used to keep track of which branch of the tree the user's sentence has currently reached. 
-  String self; ArrayList children; Unit currentNode; int parendId;
+  String self; ArrayList children; Unit currentNode; int id; int parendId;
   // 'rand' ensures that all the branches do not sway in the same direction at the same time.
   float rand = random(0,2*PI);
   Unit (String self_in){
