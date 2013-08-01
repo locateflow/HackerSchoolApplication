@@ -12,9 +12,8 @@ PFont f;
 // Variable to store text currently being typed, character by character.
 String typing = "";
 
-// Variable to store saved text when return is pressed.
+// Variable to store most recent word when return or space is pressed.
 String saved = "";
-String currentWord = "";
 
 void setup() {
   size(1500,900);
@@ -46,26 +45,23 @@ void draw() {
 void keyPressed() {
 
   if (key == '\n' ) {
-//    currentWord = saved;
-//    u.integrateWord(currentWord);
-    u.integrateWord(saved);  
+
+    u.integrateWord(savedWord);  
     u.reset();
    typing = "";
-   saved = "";
-   currentWord = "";
+   savedWord = "";
     
   } 
   if (key == ' '){
-    currentWord = saved;
     typing = typing+' ';
-    u.integrateWord(currentWord);
+    u.integrateWord(savedWord);
 
-    saved = "";
+    savedWord = "";
     // Allow for the use of backspace key.
   } else if (key == '\b'){
-    if (saved.length()>=1){
+    if (savedWord.length()>=1){
       typing = typing.substring(0, typing.length()-1);
-      saved = saved.substring(0, saved.length()-1);
+      savedWord = savedWord.substring(0, savedWord.length()-1);
     }
   }
   else if (key != '\n') {
@@ -73,7 +69,7 @@ void keyPressed() {
     // 'coded' keys are ignored for now, but for any other key concatenate the String.
     // Each character typed by the user is added to the end of the String variable.
     typing = typing + key;
-    saved = saved + key; 
+    savedWord = savedWord + key; 
     }
   }
 }
