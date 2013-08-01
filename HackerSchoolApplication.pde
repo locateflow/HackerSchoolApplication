@@ -5,12 +5,11 @@
 // This prototype still needs some work but it seemed to be an appropriate illustration of my programming skills and something I am proud of.
 // One reason chose to share this code because it was one of my first successful implementation of the concept of a class and I was proud of that.
 
-// The class 'Unit' has parents and children
+// 'u' contains the data of the branching tree structure that is displayed.
 Unit u = new Unit("");
-String inputWord;
 PFont f;
 
-// Variable to store text currently being typed
+// Variable to store text currently being typed, character by character.
 String typing = "";
 
 // Variable to store saved text when return is pressed.
@@ -19,7 +18,7 @@ String currentWord = "";
 
 void setup() {
   size(1500,900);
-  f = createFont("Arial",16,true);
+  f = createFont("Arial", 16, true);
   u.addChild("creativity");
 }
 
@@ -47,8 +46,9 @@ void draw() {
 void keyPressed() {
 
   if (key == '\n' ) {
-    currentWord = saved;
-    u.integrateWord(currentWord);
+//    currentWord = saved;
+//    u.integrateWord(currentWord);
+    u.integrateWord(saved);  
     u.reset();
    typing = "";
    saved = "";
@@ -58,10 +58,10 @@ void keyPressed() {
   if (key == ' '){
     currentWord = saved;
     typing = typing+' ';
-    inputWord = typing;
     u.integrateWord(currentWord);
 
     saved = "";
+    // Allow for the use of backspace key.
   } else if (key == '\b'){
     if (saved.length()>=1){
       typing = typing.substring(0, typing.length()-1);
@@ -96,7 +96,7 @@ class Unit {
     int numSiblings = children.size();
     translate(textWidth(self),0);
     // This allows the branches to rotate to add interest to the display.
-    rotate(sin(this.rand+.003*millis())*(PI/128)+(-PI/4));
+    rotate(sin(this.rand+.002*millis())*(PI/128)+(-PI/4));
     rotate((PI/4)/(numSiblings));
     for (int i = 0; i< numSiblings; i++){
       Unit C = (Unit) children.get(i);          
